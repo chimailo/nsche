@@ -1,0 +1,59 @@
+body {
+	background-color: #ece9dd
+}
+
+h2 {
+	font-family: 'Chelsea Market', cursive;
+	margin: 7px 0;
+	font-weight: bold;
+}
+
+nav {
+	box-shadow: none;
+}
+
+.row {
+	margin-bottom: 1px;
+}
+
+.collapsible {
+	margin: .5rem 0 0;
+}
+
+.collapsible-header {
+	line-height: 1.4rem;
+	min-height: 2rem;
+}
+
+.fullname {
+	font-family: 'Tillana', cursive;
+	font-size: 15px;
+	font-weight: 400;
+	padding-top: 5px;
+    margin: 2px 0;
+}
+
+.collapsible-body {
+	font-family: 'Chelsea Market', cursive;
+	font-weight: 400;
+	font-size: 14px;
+	color: #3d807a;
+    padding: 3px 20px 3px;
+    min-height: 110px;
+}
+
+.card {
+	margin: 0;
+	border-radius: 7px;
+}
+
+.card .card-image img {
+	border-radius: 7px;
+	max-width: 100px;
+	height: 100px;
+}
+
+.btn-floating.halfway-fab {
+    right: -14px;
+    bottom: -4px;
+}

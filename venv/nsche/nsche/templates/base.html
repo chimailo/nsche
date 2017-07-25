@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+  {% load static %}
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %} nsche-oau | home {% endblock %}</title>
+  
+  <link href="https://fonts.googleapis.com/css?family= Overpass|Bellefair|Artifika|Tillana|Chelsea+Market" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- offline materialize -->
+  <link href="{% static 'css/materialize.min.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <!-- Custom css -->
+  <link rel="stylesheet" type="text/css" href="{% block base %}{% static 'css/base.css' %}{% endblock %}" >
+  <link rel="stylesheet" type="text/css" href="{% block custom %}{% static 'css/home.css' %}{% endblock %}" >
+</head>
+<body>
+  {% block navbar-wrapper %}
+  <ul id="dropdown1" class="dropdown-content">
+    <li><a href="{% url 'users:part1list' %}">Part 1</a></li>
+    <li class="divider"></li>
+    <li><a href="{% url 'users:part2list' %}">Part 2</a></li>
+    <li class="divider"></li>
+    <li><a href="{% url 'users:part3list' %}">Part 3</a></li>
+    <li class="divider"></li>
+    <li><a href="{% url 'users:part4list' %}">Part 4</a></li>
+    <li class="divider"></li>
+    <li><a href="{% url 'users:part5list' %}">Part 5</a></li>
+  </ul>
+
+  <ul id="dropdown" class="dropdown-content">
+    <li><a href="{% url 'users:register_user' %}">Register</a></li>
+    {% if user.is_authenticated %}
+      <li><a href="{% url 'users:edit_user' user.pk %}">{{ user.get_short_name }}</a></li>  
+    {% else %}
+      <li><a href="{% url 'login' %}">Login</a></li>
+    {%  endif %}
+    <li class="divider"></li>
+    <li><a href="{% url 'logout' %}">Logout</a></li>
+  </ul>
+
+  <div class="navbar-fixed">
+  <nav class="teal lighten-2" role="navigation"> 
+    <div class="nav-wrapper container">
+      {% block brandlogo %}<a href="#" class="brand-logo"><img src="{% static 'img/best-deal.png' %}" alt="nsche's logo"></a>{% endblock %}
+      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+      <ul class="right hide-on-med-and-down">
+        {% block home %}<li class="active"><a href="{% url 'home' %}">Home</a></li>{% endblock %}
+        <li><a href="#">About</a></li>
+        {% block members %}<li><a class="dropdown-button" href="#!" data-activates="dropdown1">Members</a></li>{% endblock %}
+        <li><a href="#">Gallery</a></li>
+        <li><a class="dropdown-button" href="#!" data-activates="dropdown"><i class="material-icons">supervisor_account</i></a></li>
+      </ul>
+
+      <ul class="side-nav" id="mobile-demo">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#!">Members</a></li>
+        <li><a href="#">Gallery</a></li>
+        <li><a href="#!"><i class="material-icons">supervisor_account</i></a></li>
+      </ul> 
+    </div>
+  </nav>
+  </div>
+  {% endblock %}
+
+  {% block sidebar %}{% endblock %}      <!-- Wrapper for the sidebar -->
+
+  {% block forms %}{% endblock %}
+
+  {% block banner %}
+  <div class="parallax-container valign-wrapper resize">
+    <div class="container">
+      <div class="row center">
+        <h1 class="header col s12" id="header">NSCHE-OAU</h1>
+        <h5 class="text">...cradle of industrialists</h5>
+        <div class="row center">
+          <a href="{% url 'users:register_user' %}" id="download-button" class="btn-large waves-effect waves-light teal lighten-1">Register</a>
+        </div>
+      </div>
+    </div>
+    <div class="parallax"><img src="{% static 'img/petrochemical-plant.jpg' %}" alt="petrochemical-plant"></div>
+  </div>  <!-- Wrapper for the banner -->  <!-- Wrapper for the banner -->
+  {% endblock %}
+  
+{% block content %}
+<div class="content">
+</div>
+{% endblock %}
+
+{% block middlebanner %}
+<div class="parallax-container valign-wrapper">
+  <div class="parallax" id="parallax"><img src="{% static 'img/chemical.jpg' %}" alt="Dept of Chem. Eng."></div>
+</div>  <!-- Wrapper for the banner -->
+{% endblock %}
+
+{% block additionalcontent %}{% endblock %}
+
+{% block lowerbanner %}
+<div class="parallax-container valign-wrapper">
+  <div class="parallax" id="parallax"><img src="{% static 'img/chemical.jpg' %}" alt="Dept of Chem. Eng."></div>
+</div>  <!-- Wrapper for the banner -->
+{% endblock %}
+
+{% block footer %}
+<footer class="page-footer teal lighten-2">
+<div class="container">
+  <div class="footer-copyright">
+  Copyright &copy: 2017 | NSCHE-OAU | All rights reserved
+  </div>
+</div>
+</footer>
+</body>
+{% endblock %}
+
+  
+
+<!-- offline materialize -->
+  <script type="text/javascript" src="{% block jqeury %}{% static 'js/jquery.min.js' %}{% endblock %}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.cycle2/2.1.6/jquery.cycle2.min.js"></script>
+  <script src="{% static 'js/materialize.min.js' %}"></script>
+  <script type="text/javascript" src="{% block js %}{% static 'js/base.js' %}{% endblock %}"></script>
+ 
+</body>
+</html>

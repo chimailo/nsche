@@ -1,0 +1,22 @@
+body {
+	font-family: helvetica, arial, sans-serif
+}
+
+.resize {
+	max-height: 400px;
+}
+
+#header {
+	font-size: 70px;
+	color: #e3fffe;
+}
+
+.row .text {
+	font-size: 20px;
+	color: #d8d8d8;
+	font-style: italic;
+}
+
+.parallax-container {
+	height: 400px;
+}

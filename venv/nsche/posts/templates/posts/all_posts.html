@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} nsche-oau | posts {% endblock %}
+{% block custom %}{% static 'css/posts.css' %}{% endblock %}
+
+{% block home %}<li><a href="#">Home</a></li>{% endblock %}
+  	
+{% block content %}
+<div class="container">
+  <div class="row">
+	<div class="col s12">
+	  <div class="section">
+	    <h4 class="teal-text">Posts</h4>
+	  </div>
+  	</div>
+    {% for post in posts %}
+  	<div class="col s12">
+  	  <div class="divider"></div>
+	    <div class="section">
+	      {% if not post.pub_date %}
+				  <ul>
+			      <li><a href="{% url 'posts:post_delete' post.pk %}" class="btn-floating right"><i class="material-icons">delete</i></a></li>
+			      <li><a href="{% url 'posts:post_edit' post.pk %}" class="btn-floating right"><i class="material-icons">edit</i></a></li>
+			    </ul>
+		    {% endif %}
+		    {% if post.pub_date %}
+	      <a href="{% url 'posts:post_detail' post.pk %}" class="btn-flat waves-effect waves-teal right"><i class="material-icons">info_outline</i></a>
+	      {% endif %}
+	      <h5><a href="{% url 'posts:post_detail' post.pk %}">{{ post.title|upper }}</a></h5>
+	      <p class="about">Posted by: {{ post.author }} on {{ post.pub_date }}</p>
+	      <p>{{ post.body|truncatewords:"60" }}</p>
+	    </div>
+  	</div>
+
+    {% empty %}
+	  <p class="empty">There are no posts available yet</p>
+    {% endfor %}
+
+  </div>
+  
+{% endblock %}
+	
+
+{% block sidebar %}{% endblock %}      <!-- Wrapper for the sidebar -->
+
+{% block forms %}{% endblock %}
+
+{% block banner %}{% endblock %}      <!-- Wrapper for the sidebar -->
+
+{% block middlebanner %}{% endblock %}
+
+{% block lowerbanner %}{% endblock %}      <!-- Wrapper for the sidebar -->

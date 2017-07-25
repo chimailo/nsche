@@ -1,0 +1,12 @@
+{% block content %}
+    {% for draft in posts %}
+        <div class="draft">
+            <h1><a href="{% url 'posts:post_edit' pk=draft.pk %}">{{ draft.title }}</a></h1>
+            <p>{{ draft.body|truncatechars:200 }}</p>
+            <form action="{% url 'posts:post_delete' draft.id %}" method="post">
+            	{% csrf_token %}
+            	<input type="submit" value="delete"/>
+            </form>
+        </div>
+    {% endfor %}
+{% endblock %}

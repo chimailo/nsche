@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} nsche-oau | 100-level {% endblock %}
+{% block custom %}{% static 'css/class.css' %}{% endblock %}
+
+{% block brandlogo %}<a href="#" class="brand-logo"><h2>100-level</h2></a>{% endblock %}
+{% block home %}<li><a href="{% url 'home' %}">Home</a></li>{% endblock %}
+{% block members %}<li class="active"><a class="dropdown-button" href="#!" data-activates="dropdown1">Members</a></li>{% endblock %}
+  	
+{% block content %}
+<div class="container">
+  <div class="row">
+    {% for obj in class_list %}
+  	<div class="col s12 m6">
+  	  <ul class="collapsible popout" data-collapsible="accordion">
+		<li>
+		  <div class="collapsible-header">
+		    <p class="fullname">{{ obj.surname|upper }}, {{ obj.first_name|upper }} {{ obj.other_name|upper }}</p>
+		  </div>
+	      <div class="collapsible-body">
+	        <span>
+	          <div class="card right">
+		        <div class="card-image">
+	          	{% if obj.image %}
+	              <img class="image" src="{{ obj.image.url }}" width="100">
+  				  <a class="btn-floating halfway-fab waves-effect waves-light teal lighten-2" href="../../edit/{{ obj.pk }}"><i class="material-icons">mode_edit</i></a>
+		        {% else %}
+	              <img class="image" src="{% static 'img/profile-pic-default.jpg' %}" width="100">
+  				  <a class="btn-floating halfway-fab waves-effect waves-light teal lighten-2" href="../../edit/{{ obj.pk }}"><i class="material-icons">mode_edit</i></a>
+	            {% endif %}
+		        </div>		        
+		      </div>
+	          <ul>
+	            <li class="matric_no">{{ obj.matric_no }}</li>
+	            <li class="gender">{{ obj.gender }}</li>
+	            <li class="phone">{{ obj.phone }}</li>
+	            <li class="email">{{ obj.email }}</li>
+	            <li class="birth_date">{{ obj.birth_date }}</li>
+	          </ul>
+	        </span>
+	      </div>
+		</li>
+      </ul>
+  	</div>
+
+    {% empty %}
+	  <p class="empty">There are no registered members in this class yet</p>
+    {% endfor %}
+
+  </div>
+  
+{% endblock %}
+   
+	
+
+{% block sidebar %}{% endblock %}      <!-- Wrapper for the sidebar -->
+
+{% block forms %}{% endblock %}
+
+{% block banner %}{% endblock %}      <!-- Wrapper for the sidebar -->
+
+{% block middlebanner %}{% endblock %}
+
+{% block lowerbanner %}{% endblock %}      <!-- Wrapper for the sidebar -->

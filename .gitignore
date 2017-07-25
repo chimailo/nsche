@@ -4,4 +4,9 @@ __pycache__
 db.sqlite3
 /static
 .DS_Store
-venv
+Lib
+Include
+Scripts
+pip-selfcheck.json
+pyvenv.cfg
+static_cdn

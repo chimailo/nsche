@@ -1,0 +1,35 @@
+body {
+	background-color: #f3f3f3;
+}
+
+.card-panel {
+	padding: 7px, 20px;
+	margin: 0 3px;
+	background-color: #dae2d9;
+}
+
+.row{
+	margin: 40px 75px;
+}
+
+.header {
+	font-size: 30px;
+}
+
+.section {
+    padding-top: 0.2rem;
+    padding-bottom: 0.7rem;
+}
+
+h6 a {
+	color: #58a09a;
+}
+
+h6 a:hover {
+	color: #333;
+}
+
+.lists {
+    font-size: 1.3rem;
+    margin: .5rem 0 .1rem 0;
+}

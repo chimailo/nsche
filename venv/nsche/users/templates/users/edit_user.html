@@ -1,0 +1,147 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} nsche-oau | edit your information {% endblock %}
+{% block custom %}{% static 'css/register.css' %}{% endblock %}
+
+
+{% block forms %}
+{% block navbar-fixed %}{% endblock %}
+
+<style type="text/css">
+	.card-panel {
+		width: 600px;
+		height: 100%;
+	}
+	#mod {
+		padding-top: 25px;
+	}
+	.row {
+		padding-top: 15px;
+	}
+</style>
+
+<div class="container">
+  <div class="row">
+    <form class="col s12" action="" method="POST" enctype="multipart/form-data">{% csrf_token %}
+	<div class="card-panel">
+	  <h3 class="header">Edit your profile</h3>
+
+	  <div class="row">
+	  	<div class="input-field col s12">
+	    {{ form.surname.errors }}
+	      <label for="{{ form.surname.id_for_label }}" data-error="wrong" data-success="right">Surname:</label>
+	      {{ form.surname }}
+	      {% if form.help_text %}
+		    <p class="help">{{ form.help_text|safe }}</p>
+	      {% endif %}
+	    </div>
+	  </div>
+
+	  <div class="row">
+	    <div class="input-field col s12 l6">
+	    {{ form.first_name.errors }}
+	    {{  form.first_name }}
+	      <label for="{{ form.first_name.id_for_label }}" data-error="wrong" data-success="right">Your name:</label>
+	      {% if form.help_text %}
+		    <p class="help">{{ form.help_text|safe }}</p>
+	      {% endif %}
+	    </div>
+
+	    <div class="input-field col s12 l6">
+	    {{ form.other_name.errors }}
+	    {{  form.other_name }}
+	      <label for="{{ form.other_name.id_for_label }}" data-error="wrong" data-success="right">Middle name:</label>
+	      {% if form.help_text %}
+		    <p class="help">{{ form.help_text|safe }}</p>
+	      {% endif %}
+	    </div>
+	  </div>
+
+	  <div class="row" id="mod">
+	    <div class="input-field col s12 m6">
+		{{ form.email.errors }}
+		  <i class="material-icons prefix">email</i>{{ form.email }}
+		  <label for="{{ form.email.id_for_label }}" data-error="wrong" data-success="right">Email Address:</label>
+		  {% if form.help_text %}
+			<p class="help">{{ form.help_text|safe }}</p>
+		  {% endif %}
+	    </div>
+
+	    <div class="input-field col s12 m6">
+		{{ form.phone.errors }}
+		  <i class="material-icons prefix">phone</i>{{ form.phone }}
+		  <label for="{{ form.phone.id_for_label }}" data-error="wrong" data-success="right">Phone:</label>
+		  {% if form.help_text %}
+			<p class="help">{{ form.help_text|safe }}</p>
+		  {% endif %}
+	    </div>
+	  </div>
+
+
+	  <div class="row">
+	  	<div class="input-field col s12 m4">
+		  <i class="small material-icons prefix">reorder</i>
+		  {{ form.part }}	    
+	      <label for="{{ form.part.id_for_label }}" data-error="wrong" data-success="right">Part:</label>
+	    </div>
+
+	    <div class="input-field col s12 m4">
+		  <i class="small material-icons prefix">person_pin</i>
+		  {{ form.gender }}	    
+	      <label for="{{ form.gender.id_for_label }}" data-error="wrong" data-success="right">Sex:</label>
+	    </div>
+
+	  	<div class="input-field col s12 m4">
+		  <i class="small material-icons prefix">perm_contact_calendar</i>
+	      <label for="{{ form.birth_date.id_for_label }}" data-error="wrong" data-success="right">Birth Date:</label>
+	  	  {{ form.birth_date }}
+	  	</div>
+	  </div>
+
+	  <div class="row">
+	    <div class="file-field col s12">
+		  <div class="btn">
+		    <span>Photo</span>
+			{{ form.image.errors }}
+			{{ form.image }}
+		  </div>
+		  <div class="file-path-wrapper">
+		    <input class="file-path validate" type="text">
+		    {% if form.help_text %}
+			  <p class="help">{{ form.help_text|safe }}</p>
+		    {% endif %}
+		  </div>
+	    </div>
+	  </div>
+	  
+	  {% if user.is_exco %}
+	  	<div class="row">
+	  	  <div class="input-field col s12">
+			{{ form.bio.errors }}
+	  	  	{{ form.bio }}
+			<label for="{{ form.id_for_bio }}" data-error="wrong" data-success="right">About:</label>
+	  	  </div>
+	  	</div>
+	  {% endif %}
+
+	  <div class="card-action"> 
+        <div class="right-align">
+          <button class="waves-effect waves-light btn" type="submit">Submit</button>
+        </div>
+      </div>
+
+	</div>
+	</form>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block banner %}{% endblock %}
+
+{% block middlebanner %}{% endblock %}
+
+{% block lowerbanner %}{% endblock %}
+
+{% block footer %}{% endblock %}

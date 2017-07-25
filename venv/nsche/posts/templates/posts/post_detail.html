@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} nsche-oau | posts {% endblock %}
+{% block custom %}{% static 'css/posts.css' %}{% endblock %}
+
+{% block home %}<li><a href="#">Home</a></li>{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+	  <div class="col s12">
+		  <div class="section">
+		    <h3 class="title">{{ post.title|upper }}</h3>
+		    <div class="divider"></div>
+		  </div>
+	  </div>
+	 	<div class="col s12">
+		  <div class="section">
+		    {% if user.is_authenticated %}
+			  <ul>
+		      <li><a href="{% url 'posts:post_delete' post.pk %}" class="btn-floating right"><i class="material-icons">delete</i></a></li>
+		      <li><a href="{% url 'posts:post_edit' post.pk %}" class="btn-floating right"><i class="material-icons">edit</i></a></li>
+		      <li><a href="{% url 'posts:publish_post' post.pk %}" class="btn-floating right"><i class="material-icons">publish</i></a></li>
+		    </ul>
+		    {% endif %}
+	      <p class="about">Posted by: {{ post.author }} on {{ post.pub_date }}</p>
+		  </div>
+    	<div class="section">
+		    <p class="flow-text">{{ post.body }}</p>		  		
+		  </div>
+  	</div>
+  </div>
+</div>
+{% endblock %}
+	
+
+{% block sidebar %}{% endblock %}      <!-- Wrapper for the sidebar -->
+
+{% block forms %}{% endblock %}
+
+{% block banner %}{% endblock %}      <!-- Wrapper for the sidebar -->
+
+{% block middlebanner %}{% endblock %}
+
+{% block lowerbanner %}{% endblock %}      <!-- Wrapper for the sidebar -->

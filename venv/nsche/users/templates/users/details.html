@@ -1,0 +1,33 @@
+<h1 class="heading">user Detail Page</h1>
+
+<p>Full Name:{{ user.surname|upper }} {{ user.first_name }} {{ user.other_name }}</p>
+
+<p>Gender:{{ user.gender }}</p>
+<p>Matric Number:{{ user.matric_no }}</p>
+<p>Email Address:{{ user.email }}</p>
+<p>Phone Number:{{ user.phone }}</p>
+<p>level:{{ user.part }}</p>
+
+{% if user.image %}
+  <img src="{{ user.image.url }}" width="100">
+{% endif %}
+
+<p>click <a href="{% url 'users:edit_user' user.id %}">here</a> to edit your details</p>
+
+
+<!-- 
+
+<div class="col s12 m8 offset-m2 l6 offset-l3">
+        <div class="card-panel grey lighten-5 z-depth-1">
+          <div class="row valign-wrapper">
+            <div class="col s2">
+              <img src="images/yuna.jpg" alt="" class="circle responsive-img"> notice the "circle" class
+            </div>
+            <div class="col s10">
+              <span class="black-text">
+                This is a square image. Add the "circle" class to it to make it appear circular.
+              </span>
+            </div>
+          </div>
+        </div>
+      </div> -->

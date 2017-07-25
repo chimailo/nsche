@@ -1,0 +1,33 @@
+body {
+	background: #ece9dd;
+}
+
+h5 a {
+	color: #58a09a;
+	font-family: 'Artifika', sans-serif;
+}
+
+h3 {
+	color: #58a09a;
+  	font-family: 'Artifika', sans-serif;
+}
+
+.btn-flat i {
+	font-size: 1.8rem;
+	color: #a7ad8b
+}
+
+.about {
+    color: #778c7d;
+    font-family: cursive;
+    font-size: 13px;
+    line-height: 7px;
+}
+
+.btn-floating {
+	margin: -9px 15px;
+}
+
+.flow-text {
+	font-family: 'Bellefair', serif;
+}

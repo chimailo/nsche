@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} nsche-oau | create post {% endblock %}
+{% block custom %}{% static 'css/register.css' %}{% endblock %}
+
+
+{% block forms %}
+{% block navbar-fixed %}{% endblock %}
+
+<style type="text/css">
+	.material-icons {
+    	line-height: 3.55;
+}
+</style>
+
+<div class="container">
+  <div class="row">
+    <form class="col s12" action="" method="POST" enctype="multipart/form-data">{% csrf_token %}
+    <div class="card-panel">
+    {{ form.non_field_errors }}
+
+    {% block header %} <h3 class="header center"> Create a post</h3>{% endblock %}
+      <div class="row">
+	    <div class="input-field col s12">
+	  	  {{ form.title.errors }}
+		  {{ form.title }}
+		  <label for="{{ form.title.id_for_label }}" data-error="wrong" data-success="right">Title:</label>
+		  {% if form.help_text %}
+			<p class="help">{{ form.help_text|safe }}</p>
+		  {% endif %}
+        </div>
+      </div>
+
+	  <div class="row">
+	    <div class="input-field col s12">
+	  	  {{ form.body.errors }}
+		  <i class="material-icons prefix">edit</i>{{ form.body }}
+		  <label for="{{ form.body.id_for_label }}" data-error="wrong" data-success="right">Text:</label>
+		  {% if form.help_text %}
+			<p class="help">{{ form.help_text|safe }}</p>
+		  {% endif %}
+        </div>
+      </div>
+
+	  <div class="card-action"> 
+        <div class="right-align">
+          <button class="waves-effect waves-light btn" type="submit">Submit</button>
+        </div>
+      </div>
+
+    </form>
+  </div>
+</div>
+{% endblock %}
+
+{% block banner %}
+{% endblock %}
+
+{% block middlebanner %}
+{% endblock %}
+
+{% block lowerbanner %}
+{% endblock %}
+
+{% block footer %}
+{% endblock %}

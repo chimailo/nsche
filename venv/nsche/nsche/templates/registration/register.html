@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} nsche-oau | register {% endblock %}
+{% block custom %}{% static 'css/register.css' %}{% endblock %}
+
+
+{% block forms %}
+{% block navbar-fixed %}
+{% endblock %}
+
+<div class="container">
+  <div class="row">
+    <form class="col s12" action="" method="POST">{% csrf_token %}
+    <div class="card-panel">
+    {{ form.non_field_errors }}
+
+    <h3 class="header"> Registration Form</h3>
+      <div class="row">
+	    <div class="input-field col s12">
+	  	{{ form.matric_no.errors }}
+		  <i class="medium material-icons prefix">perm_identity</i>{{ form.matric_no }}
+		  <label for="{{ form.matric_no.id_for_label }}" data-error="wrong" data-success="right">Matric Number:</label>
+		  {% if form.help_text %}
+			<p class="help">{{ form.help_text|safe }}</p>
+		  {% endif %}
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-field col s12">
+		{{ form.email.errors }}
+		  <i class="material-icons prefix">email</i>{{ form.email }}
+		  <label for="{{ form.email.id_for_label }}" data-error="wrong" data-success="right">Email Address:</label>
+		  {% if form.help_text %}
+			<p class="help">{{ form.help_text|safe }}</p>
+		  {% endif %}
+        </div>
+      </div>
+
+      <div class="row">
+      	<div class="input-field col s12">
+	    {{ form.password.errors }}
+	      <i class="medium material-icons prefix">lock_open</i>{{ form.password }}
+	      <label for="{{ form.password.id_for_label }}" data-error="wrong" data-success="right">Password:</label>
+	      {% if form.help_text %}
+		    <p class="help">{{ form.help_text|safe }}</p>
+	      {% endif %}
+        </div>
+      </div>
+
+    <h3 class="header"> Personal Details</h3>
+    
+      <div class="row">
+      	<div class="input-field col s12">
+	    {{ form.surname.errors }}
+	      <label for="{{ form.surname.id_for_label }}" data-error="wrong" data-success="right">surname:</label>
+	      {{ form.surname }}
+	      {% if form.help_text %}
+		    <p class="help">{{ form.help_text|safe }}</p>
+	      {% endif %}
+	    </div>
+	  </div>
+
+      <div class="row">
+        <div class="input-field col s12 l6">
+	    {{ form.first_name.errors }}
+	    {{  form.first_name }}
+	      <label for="{{ form.fisrt_name.id_for_label }}" data-error="wrong" data-success="right">Your name:</label>
+	      {% if form.help_text %}
+		    <p class="help">{{ form.help_text|safe }}</p>
+	      {% endif %}
+        </div>
+
+        <div class="input-field col s12 l6">
+	    {{ form.other_name.errors }}
+	    {{  form.other_name }}
+	      <label for="{{ form.other_name.id_for_label }}" data-error="wrong" data-success="right">Middle name:</label>
+	      {% if form.help_text %}
+		    <p class="help">{{ form.help_text|safe }}</p>
+	      {% endif %}
+        </div>
+      </div>
+
+      <div class="row">
+      	<div class="input-field col s12">
+		  {{ form.part }}	    
+	      <label for="{{ form.part.id_for_label }}">Part:</label>
+	    </div>
+      </div>
+      
+
+	  <div class="card-action"> 
+        <div class="right-align">
+          <button class="waves-effect waves-light btn" type="submit">Submit</button>
+        </div>
+      </div>
+
+    </form>
+  </div>
+</div>
+{% endblock %}
+
+{% block banner %}
+{% endblock %}
+
+{% block middlebanner %}
+{% endblock %}
+
+{% block lowerbanner %}
+{% endblock %}
+
+{% block footer %}
+{% endblock %}

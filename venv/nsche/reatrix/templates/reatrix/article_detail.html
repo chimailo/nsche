@@ -1,0 +1,51 @@
+<div class="content">
+	{% block content %}
+		{% if article.pub_date %}
+		    <div class="date">
+		        <p>Published: {{ article.pub_date }}</p>
+		    </div>
+		{% else %}
+		    <a href="{% url 'reatrix:publish_article' pk=article.pk %}">Post</a>
+		{% endif %}
+
+		<div class = "body">
+		{% if article %}
+			<h2>{{ article.title|upper }}</h2>
+			<p>{{ article.author|upper }}</p> 
+			<p> {{ article.body|linebreaksbr }} </p>
+
+		{% endif %}
+		</div>
+		
+	{% endblock %}
+{% if article.pub_date %}
+	{% block comments %}
+		
+		<div class="comments">
+			<h3>Comments</h3>
+			<p>{{ comments.count }} comments</p>
+		
+			{% for comment in article.comments_set.all %}
+				<p>Comment by {{ comment.name }}, {{ comment.matric_no }} on {{ comment.comment_date }}</p>
+				<p>{{ comment.comment }}</p>
+			{% empty %}
+				<p>No comments, Be the first to comment</p>
+			{% endfor %}
+		</div>
+	{% endblock %}
+	
+
+	<div class='comment'>
+		{% block comment %}
+		<form action="{% url 'reatrix:all_articles' %}" method="POST">
+		    {% csrf_token %}
+		    <table>
+		        {{ form.as_p }}
+		    </table>
+		    <input type="submit" name="submit" value="comment" />
+		</form>
+		{% endblock %}
+	</div>
+{% endif %}
+</div>
+

@@ -1,0 +1,21 @@
+.row{
+	margin: 40px 75px;
+}
+
+.header {
+	font-size: 30px;
+}
+
+.pad {
+	margin: 80px 0;
+}
+
+.list li a {
+	line-height: 2;
+	padding: 10px;
+	color: #333;
+}
+
+.list li a:hover {
+	color: #039be5;
+}
